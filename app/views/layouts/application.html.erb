@@ -4,12 +4,22 @@
     <title>ReceiveEverything</title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= fb_connect_async_js %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-  <%= yield %>
+    
+    <% if current_mystic %>
+      <%= link_to 'log out', destroy_mystic_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to 'log in', new_mystic_session_path %>
+      <%= link_to 'sign up', new_mystic_registration_path %>
+      <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email') %>
+    <% end %>
+    
+    <%= yield %>
 
   </body>
 </html>

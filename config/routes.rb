@@ -1,6 +1,7 @@
 ReceiveEverything::Application.routes.draw do
   devise_for :mystics
   resources :mystics
+  get 'facebook_new_session' => 'facebook#new_session', :as => 'new_session_facebook'
   
   root :to => 'mystics#index'
   # The priority is based upon order of creation: first created -> highest priority.

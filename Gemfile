@@ -30,6 +30,10 @@ gem 'jbuilder', '~> 1.2'
 # authentication system for letting users log in
 gem 'devise'
 
+# facebook authentication system
+gem 'mogli', github: 'mikeymicrophone/mogli'
+gem 'facebooker2'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
