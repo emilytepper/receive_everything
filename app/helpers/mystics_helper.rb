@@ -1,0 +1,2 @@
+module MysticsHelper
+end

@@ -21,7 +21,6 @@ module ReceiveEverything
     # config.i18n.default_locale = :de
     config.generators do |generator|
       generator.test_framework :rspec
-      generator.template_engine :mustache
     end
   end
 end

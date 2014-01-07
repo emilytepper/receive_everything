@@ -1,0 +1,7 @@
+<div id="mystics">
+  <% @mystics.each do |mystic| %>
+    <%= div_for mystic do %>
+      <%= mystic.email %>
+    <% end %>
+  <% end %>
+</div>
