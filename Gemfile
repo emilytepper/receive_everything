@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 1.2'
 # authentication system for letting users log in
 gem 'devise'
 
+# template language for HTML generation
+gem 'mustache'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

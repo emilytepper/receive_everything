@@ -1,5 +1,6 @@
 ReceiveEverything::Application.routes.draw do
-  root :to => 'meditations#index'
+  devise_for :mystics
+  root :to => 'mystics#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
