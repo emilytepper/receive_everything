@@ -13,16 +13,20 @@
 
   <% if @inclusion.new_record? && @inclusion.product %>
     <%= f.hidden_field :product_id %>
+    <div class="field">
+      <%= f.label :meditation_id %><br>
+      <%= f.select :meditation_id, options_from_collection_for_select(Meditation.not_in_product(@inclusion.product), :id, :name), :include_blank => true %>
+    </div>
   <% else %>
     <div class="field">
       <%= f.label :product_id %><br>
       <%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name, @inclusion.product_id), :include_blank => true %>
     </div>
+    <div class="field">
+      <%= f.label :meditation_id %><br>
+      <%= f.select :meditation_id, options_from_collection_for_select(Meditation.all, :id, :name, @inclusion.meditation_id), :include_blank => true %>
+    </div>
   <% end %>
-  <div class="field">
-    <%= f.label :meditation_id %><br>
-    <%= f.select :meditation_id, options_from_collection_for_select(Meditation.all, :id, :name, @inclusion.meditation_id), :include_blank => true %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
