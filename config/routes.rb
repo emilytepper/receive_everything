@@ -1,4 +1,10 @@
 ReceiveEverything::Application.routes.draw do
+  resources :inclusions
+
+  resources :products do
+    resources :inclusions
+  end
+
   resources :meditations
 
   devise_for :mystics

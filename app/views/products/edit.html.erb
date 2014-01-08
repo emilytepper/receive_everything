@@ -1,0 +1,12 @@
+<h1>Editing product</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Add a meditation to this product', new_product_inclusion_path(@product), :remote => true %>
+
+<div id="new_inclusion_holder">
+  
+</div>
+
+<%= link_to 'Show', @product %> |
+<%= link_to 'Back', products_path %>

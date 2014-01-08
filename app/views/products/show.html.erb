@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<div id="meditations_included_in_product">
+  <% @product.meditations.each do |meditation| %>
+    <%= div_for meditation do %>
+      <%= link_to_name meditation %>
+    <% end %>
+  <% end %>
+</div>
+
+<p>
+  <strong>Active:</strong>
+  <%= @product.active %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @product.creator_id %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

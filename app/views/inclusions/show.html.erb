@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= link_to_name @inclusion.product %>
+</p>
+
+<p>
+  <strong>Meditation:</strong>
+  <%= link_to_name @inclusion.meditation %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= link_to_name @inclusion.creator_id %>
+</p>
+
+<%= link_to 'Edit', edit_inclusion_path(@inclusion) %> |
+<%= link_to 'Back', inclusions_path %>

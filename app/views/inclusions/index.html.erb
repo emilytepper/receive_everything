@@ -1,0 +1,31 @@
+<h1>Listing inclusions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Meditation</th>
+      <th>Creator</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inclusions.each do |inclusion| %>
+      <tr>
+        <td><%= inclusion.product %></td>
+        <td><%= inclusion.meditation %></td>
+        <td><%= inclusion.creator_id %></td>
+        <td><%= link_to 'Show', inclusion %></td>
+        <td><%= link_to 'Edit', edit_inclusion_path(inclusion) %></td>
+        <td><%= link_to 'Destroy', inclusion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inclusion', new_inclusion_path %>
