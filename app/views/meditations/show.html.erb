@@ -14,6 +14,6 @@
   <strong>Creator:</strong>
   <%= @meditation.creator_id %>
 </p>
-
+<%= soundcloud_embed_for_meditation @meditation %>
 <%= link_to 'Edit', edit_meditation_path(@meditation) %> |
 <%= link_to 'Back', meditations_path %>
