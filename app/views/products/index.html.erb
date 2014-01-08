@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Current Price</th>
       <th>Active</th>
       <th>Creator</th>
       <th></th>
@@ -16,6 +17,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
+        <td><%= product.current_price_in_cents %></td>
         <td><%= product.active %></td>
         <td><%= product.creator_id %></td>
         <td><%= link_to 'Show', product %></td>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= link_to_name @price.product %>
+</p>
+
+<p>
+  <strong>Cents:</strong>
+  <%= @price.cents %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @price.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @price.end_time %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @price.active %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @price.creator_id %>
+</p>
+
+<%= link_to 'Edit', edit_price_path(@price) %> |
+<%= link_to 'Back', prices_path %>

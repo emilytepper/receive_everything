@@ -34,6 +34,9 @@ gem 'devise'
 gem 'mogli', github: 'mikeymicrophone/mogli'
 gem 'facebooker2'
 
+# utility for nil-checking
+gem 'andand'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
