@@ -1,0 +1,31 @@
+<h1>Listing meditations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Soundcloud url</th>
+      <th>Creator</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meditations.each do |meditation| %>
+      <tr>
+        <td><%= meditation.name %></td>
+        <td><%= meditation.soundcloud_url %></td>
+        <td><%= meditation.creator_id %></td>
+        <td><%= link_to 'Show', meditation %></td>
+        <td><%= link_to 'Edit', edit_meditation_path(meditation) %></td>
+        <td><%= link_to 'Destroy', meditation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Meditation', new_meditation_path %>

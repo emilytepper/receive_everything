@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107154828) do
+ActiveRecord::Schema.define(version: 20140108122042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "meditations", force: true do |t|
+    t.string   "name"
+    t.string   "soundcloud_url"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "mystics", force: true do |t|
     t.string   "first_name"

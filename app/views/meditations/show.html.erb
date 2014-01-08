@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @meditation.name %>
+</p>
+
+<p>
+  <strong>Soundcloud url:</strong>
+  <%= @meditation.soundcloud_url %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @meditation.creator_id %>
+</p>
+
+<%= link_to 'Edit', edit_meditation_path(@meditation) %> |
+<%= link_to 'Back', meditations_path %>

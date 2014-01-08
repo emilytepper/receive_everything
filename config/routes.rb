@@ -1,4 +1,6 @@
 ReceiveEverything::Application.routes.draw do
+  resources :meditations
+
   devise_for :mystics
   resources :mystics
   get 'facebook_new_session' => 'facebook#new_session', :as => 'new_session_facebook'
