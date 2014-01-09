@@ -12,29 +12,8 @@ class MysticsController < ApplicationController
   def show
   end
 
-  # GET /mystics/new
-  def new
-    @mystic = Mystic.new
-  end
-
   # GET /mystics/1/edit
   def edit
-  end
-
-  # POST /mystics
-  # POST /mystics.json
-  def create
-    @mystic = Mystic.new(mystic_params)
-
-    respond_to do |format|
-      if @mystic.save
-        format.html { redirect_to @mystic, notice: 'Mystic was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @mystic }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @mystic.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /mystics/1

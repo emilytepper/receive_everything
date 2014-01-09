@@ -1,5 +1,6 @@
 class MeditationsController < ApplicationController
   before_action :set_meditation, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_creatrix!
 
   # GET /meditations
   # GET /meditations.json

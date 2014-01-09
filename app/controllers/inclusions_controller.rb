@@ -1,5 +1,6 @@
 class InclusionsController < ApplicationController
   before_action :set_inclusion, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_creatrix!
 
   # GET /inclusions
   # GET /inclusions.json
