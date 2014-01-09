@@ -2,6 +2,9 @@ class Meditation < ActiveRecord::Base
   has_many :inclusions
   has_many :products, :through => :inclusions
   
+  has_many :accesses
+  has_many :mystics, :through => :accesses
+  
   scope :not_in_product, lambda { |product| product.inclusions.any? ? where('id not in (?)', product.inclusions.map(&:meditation_id)) : nil }
   scope :free, lambda { where :free => true }
   scope :active, lambda { where :active => true }

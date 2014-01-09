@@ -18,9 +18,17 @@ class PurchasesController < ApplicationController
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => @amount,
-      :description => "#{current_mystic.name} purchase of #{@product.name}",
+      :description => "#{current_mystic.email} purchase of #{@product.name}",
       :currency    => 'usd'
     )
+    
+    if charge.paid
+      @product.meditations.each do |meditation|
+        current_mystic.accesses.create :meditation => meditation
+      end
+    end
+
+    redirect_to root_url
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

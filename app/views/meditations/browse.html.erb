@@ -1,11 +1,12 @@
 <div id="meditations">
   <% @meditations.each do |meditation| %>
     <%= div_for meditation do %>
-      <%= link_to meditation.name, display_meditation_path(meditation) %>
-      <% if meditation.free? %>
-        (free!)
-      <% else %>      
+      <% if current_mystic.has_access_to? meditation %>
+        <%= link_to meditation.name, display_meditation_path(meditation) %>
+      <% else %>
+        <%= meditation.name %>
         <%= form_tag purchases_path do %>
+          <%= hidden_field_tag :product_id, meditation.products.first.andand.id %>
           <article>
             <label class="amount">
               <span>Price: <%= number_to_currency meditation.current_price_in_dollars %></span>
