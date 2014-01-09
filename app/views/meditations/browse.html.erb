@@ -1,0 +1,12 @@
+<div id="meditations">
+  <% @meditations.each do |meditation| %>
+    <%= div_for meditation do %>
+      <%= link_to meditation.name, display_meditation_path(meditation) %>
+      <% if meditation.free? %>
+        (free!)
+      <% else %>
+        <%= number_to_currency meditation.current_price_in_dollars %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

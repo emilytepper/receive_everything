@@ -8,13 +8,20 @@ ReceiveEverything::Application.routes.draw do
     resources :inclusions
   end
 
-  resources :meditations
+  resources :meditations do
+    collection do
+      get :browse
+    end
+    member do
+      get :display
+    end
+  end
 
   devise_for :mystics
   resources :mystics
   get 'facebook_new_session' => 'facebook#new_session', :as => 'new_session_facebook'
   
-  root :to => 'mystics#index'
+  root :to => 'meditations#browse'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

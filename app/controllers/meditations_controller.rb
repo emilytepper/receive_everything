@@ -1,6 +1,14 @@
 class MeditationsController < ApplicationController
   before_action :set_meditation, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_creatrix!
+  before_action :authenticate_creatrix!, except: [:browse, :display]
+  
+  def browse
+    @meditations = Meditation.active
+  end
+  
+  def display
+    @meditation = Meditation.find params[:id]
+  end
 
   # GET /meditations
   # GET /meditations.json
@@ -70,6 +78,6 @@ class MeditationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meditation_params
-      params.require(:meditation).permit(:name, :soundcloud_url, :free)
+      params.require(:meditation).permit(:name, :soundcloud_url, :free, :active)
     end
 end

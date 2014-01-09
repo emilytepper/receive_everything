@@ -1,0 +1,8 @@
+<%= div_for @meditation do %>
+  <header>
+    <%= @meditation.name %>
+  </header>
+  <section>
+    <%= soundcloud_embed_for_meditation @meditation %>
+  </section>
+<% end %>
