@@ -70,6 +70,6 @@ class InclusionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inclusion_params
-      params.require(:inclusion).permit(:product_id, :meditation_id, :creator_id)
+      params.require(:inclusion).permit(:product_id, :meditation_id)
     end
 end
