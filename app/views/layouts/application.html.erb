@@ -19,6 +19,10 @@
       <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email') %>
     <% end %>
     
+    <% if current_creatrix %>
+      <%= link_to 'creatrix sign out', destroy_creatrix_session_path, :method => :delete %>
+    <% end %>
+    
     <%= yield %>
 
   </body>
