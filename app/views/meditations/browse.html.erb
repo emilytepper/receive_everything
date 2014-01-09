@@ -4,9 +4,22 @@
       <%= link_to meditation.name, display_meditation_path(meditation) %>
       <% if meditation.free? %>
         (free!)
-      <% else %>
-        <%= number_to_currency meditation.current_price_in_dollars %>
+      <% else %>      
+        <%= form_tag purchases_path do %>
+          <article>
+            <label class="amount">
+              <span>Price: <%= number_to_currency meditation.current_price_in_dollars %></span>
+            </label>
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="<%= meditation.name %>"
+                  data-amount="<%= meditation.current_price_in_cents %>"></script>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
 </div>
+
+

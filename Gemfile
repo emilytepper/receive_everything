@@ -34,6 +34,9 @@ gem 'devise'
 gem 'mogli', github: 'mikeymicrophone/mogli'
 gem 'facebooker2'
 
+# credit card processing with Stripe
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 # utility for nil-checking
 gem 'andand'
 
