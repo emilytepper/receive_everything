@@ -3,6 +3,6 @@
     <%= @meditation.name %>
   </header>
   <section>
-    <%= soundcloud_embed_for_meditation @meditation %>
+    <%= @meditation.embed.html_safe %>
   </section>
 <% end %>

@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109142847) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20140202224920) do
 
   create_table "accesses", force: true do |t|
     t.integer  "meditation_id"
@@ -23,8 +20,8 @@ ActiveRecord::Schema.define(version: 20140109142847) do
     t.datetime "updated_at"
   end
 
-  add_index "accesses", ["meditation_id"], name: "index_accesses_on_meditation_id", using: :btree
-  add_index "accesses", ["mystic_id"], name: "index_accesses_on_mystic_id", using: :btree
+  add_index "accesses", ["meditation_id"], name: "index_accesses_on_meditation_id"
+  add_index "accesses", ["mystic_id"], name: "index_accesses_on_mystic_id"
 
   create_table "creatrixes", force: true do |t|
     t.string   "first_name"
@@ -45,17 +42,8 @@ ActiveRecord::Schema.define(version: 20140109142847) do
     t.datetime "updated_at"
   end
 
-  add_index "creatrixes", ["email"], name: "index_creatrixes_on_email", unique: true, using: :btree
-  add_index "creatrixes", ["reset_password_token"], name: "index_creatrixes_on_reset_password_token", unique: true, using: :btree
-
-  create_table "credit_cards", force: true do |t|
-    t.integer  "mystic_id"
-    t.string   "stripe_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "credit_cards", ["mystic_id"], name: "index_credit_cards_on_mystic_id", using: :btree
+  add_index "creatrixes", ["email"], name: "index_creatrixes_on_email", unique: true
+  add_index "creatrixes", ["reset_password_token"], name: "index_creatrixes_on_reset_password_token", unique: true
 
   create_table "inclusions", force: true do |t|
     t.integer  "product_id"
@@ -65,8 +53,8 @@ ActiveRecord::Schema.define(version: 20140109142847) do
     t.datetime "updated_at"
   end
 
-  add_index "inclusions", ["meditation_id"], name: "index_inclusions_on_meditation_id", using: :btree
-  add_index "inclusions", ["product_id"], name: "index_inclusions_on_product_id", using: :btree
+  add_index "inclusions", ["meditation_id"], name: "index_inclusions_on_meditation_id"
+  add_index "inclusions", ["product_id"], name: "index_inclusions_on_product_id"
 
   create_table "meditations", force: true do |t|
     t.string   "name"
@@ -76,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140109142847) do
     t.datetime "updated_at"
     t.boolean  "free"
     t.boolean  "active"
+    t.text     "embed"
   end
 
   create_table "mystics", force: true do |t|
@@ -101,9 +90,9 @@ ActiveRecord::Schema.define(version: 20140109142847) do
     t.string   "stripe_id"
   end
 
-  add_index "mystics", ["confirmation_token"], name: "index_mystics_on_confirmation_token", unique: true, using: :btree
-  add_index "mystics", ["email"], name: "index_mystics_on_email", unique: true, using: :btree
-  add_index "mystics", ["reset_password_token"], name: "index_mystics_on_reset_password_token", unique: true, using: :btree
+  add_index "mystics", ["confirmation_token"], name: "index_mystics_on_confirmation_token", unique: true
+  add_index "mystics", ["email"], name: "index_mystics_on_email", unique: true
+  add_index "mystics", ["reset_password_token"], name: "index_mystics_on_reset_password_token", unique: true
 
   create_table "prices", force: true do |t|
     t.integer  "product_id"
@@ -116,7 +105,7 @@ ActiveRecord::Schema.define(version: 20140109142847) do
     t.datetime "updated_at"
   end
 
-  add_index "prices", ["product_id"], name: "index_prices_on_product_id", using: :btree
+  add_index "prices", ["product_id"], name: "index_prices_on_product_id"
 
   create_table "products", force: true do |t|
     t.string   "name"
