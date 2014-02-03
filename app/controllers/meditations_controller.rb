@@ -1,6 +1,7 @@
 class MeditationsController < ApplicationController
   before_action :set_meditation, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_creatrix!, except: [:browse, :display]
+  before_action :authenticate_mystic!, only: [:browse, :display]
   
   def browse
     @meditations = Meditation.active
