@@ -1,6 +1,18 @@
 ReceiveEverything::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.mandrillapp.com',
+    port:                 587,
+    domain:               'imeditate-staging.herokuapp.com',
+    user_name:            ENV['EMAIL_USERNAME'],
+    password:             ENV['EMAIL_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = { :host => 'http://imeditate-staging.herokuapp.com' }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -38,8 +50,6 @@ ReceiveEverything::Application.configure do
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
-
-  config.action_mailer.default_url_options = { :host => 'http://imeditate-staging.herokuapp.com' }
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
