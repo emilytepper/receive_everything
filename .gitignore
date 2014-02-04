@@ -16,3 +16,5 @@
 /tmp
 
 config/initializers/dev_constants.rb
+
+config/database.yml
