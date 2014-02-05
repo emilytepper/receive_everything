@@ -20,6 +20,8 @@
         <td><%= product.current_price_in_cents %></td>
         <td><%= product.active %></td>
         <td><%= product.creator_id %></td>
+        <td><%= link_to 'move higher', move_higher_product_path(product), :method => :put %></td>
+        <td><%= link_to 'move lower', move_lower_product_path(product), :method => :put %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

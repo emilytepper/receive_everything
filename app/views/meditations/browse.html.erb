@@ -4,7 +4,9 @@
       <% if current_mystic.has_access_to? meditation %>
         <%= link_to meditation.name, display_meditation_path(meditation) %>
       <% else %>
-        <%= meditation.name %>
+        <header class="meditation_name">
+          <%= meditation.name %>
+        </header>
         <%= form_tag purchases_path do %>
           <%= hidden_field_tag :product_id, meditation.products.first.andand.id %>
           <article>

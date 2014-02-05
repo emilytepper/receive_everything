@@ -1,11 +1,15 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_creatrix!
+  before_action :set_product, only: [:show, :edit, :update, :move_higher, :move_lower, :destroy]
+  before_action :authenticate_creatrix!, :except => :browse
+
+  def browse
+    @products = Product.ordered.active
+  end
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.ordered
   end
 
   # GET /products/1
@@ -50,6 +54,16 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_higher
+    @product.move_higher
+    redirect_to products_path
+  end
+  
+  def move_lower
+    @product.move_lower
+    redirect_to products_path
   end
 
   # DELETE /products/1

@@ -8,6 +8,13 @@ ReceiveEverything::Application.routes.draw do  resources :purchases
 
   resources :products do
     resources :inclusions
+    member do
+      put :move_higher
+      put :move_lower
+    end
+    collection do
+      get :browse
+    end
   end
 
   resources :meditations do
@@ -23,7 +30,7 @@ ReceiveEverything::Application.routes.draw do  resources :purchases
   resources :mystics
   get 'facebook_new_session' => 'facebook#new_session', :as => 'new_session_facebook'
   
-  root :to => 'meditations#browse'
+  root :to => 'products#browse'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

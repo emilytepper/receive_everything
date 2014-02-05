@@ -40,6 +40,9 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 # utility for nil-checking
 gem 'andand'
 
+# allows items of data to be reordered
+gem 'acts_as_list'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

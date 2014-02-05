@@ -1,0 +1,28 @@
+<div id="products">
+  <% @products.each do |product| %>
+    <%= div_for product do %>
+      <%= product.name %>
+      
+      <%= form_tag purchases_path do %>
+        <%= hidden_field_tag :product_id, product.id %>
+        <article>
+          <label class="amount">
+            <span class="price"><%= number_to_currency product.current_price_in_dollars %></span>
+          </label>
+        </article>
+
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="<%= product.name %>"
+                data-amount="<%= product.current_price_in_cents %>"></script>
+      <% end %>
+      <ul>
+        <% product.meditations.each do |meditation| %>
+          <%= div_for meditation do %>
+            <%= meditation.name %>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>
