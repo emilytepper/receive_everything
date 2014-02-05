@@ -12,28 +12,30 @@
     <p class="alert"><%= alert %></p>
     
     <% if current_mystic %>
+      <%= link_to 'View Products', browse_products_path %>
+      <%= link_to 'View Meditations', browse_meditations_path %>
       <%= link_to 'log out', destroy_mystic_session_path, :method => :delete %>
     <% else %>
-      <%= link_to 'log in', new_mystic_session_path %>
-      <%= link_to 'sign up', new_mystic_registration_path %>
       <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email') %>
+      <br>
+      <i>Or if you prefer not to use Facebook right now</i><br>
+      <%= link_to 'sign up with email', new_mystic_registration_path %>
+      <%= link_to 'log in with email', new_mystic_session_path %>
     <% end %>
-    
+
+    <%= yield %>
+
+  <nav id="footer">
+    <%= link_to 'Admin Panel', meditations_path %>
     <% if current_creatrix %>
-      <%= link_to 'creatrix sign out', destroy_creatrix_session_path, :method => :delete %>
       <%= link_to 'meditations', meditations_path %>
       <%= link_to 'products', products_path %>
       <%= link_to 'inclusions', inclusions_path %>
       <%= link_to 'prices', prices_path %>
       <%= link_to 'mystics', mystics_path %>
       <%= link_to 'accesses', accesses_path %>
+      <%= link_to 'sign out', destroy_creatrix_session_path, :method => :delete %>
     <% end %>
-    
-    <%= yield %>
-
-
-  <nav id="footer">
-    <%= link_to 'Admin Panel', meditations_path %>
   </nav>
   </body>
 </html>
