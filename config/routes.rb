@@ -4,6 +4,7 @@ ReceiveEverything::Application.routes.draw do  resources :purchases
   resources :prices
 
   resources :inclusions
+  resources :accesses
 
   resources :products do
     resources :inclusions

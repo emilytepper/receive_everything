@@ -2,12 +2,12 @@
 
 <p>
   <strong>Meditation:</strong>
-  <%= @access.meditation %>
+  <%= link_to_name @access.meditation %>
 </p>
 
 <p>
   <strong>Mystic:</strong>
-  <%= @access.mystic %>
+  <%= link_to_name @access.mystic %>
 </p>
 
 <%= link_to 'Edit', edit_access_path(@access) %> |

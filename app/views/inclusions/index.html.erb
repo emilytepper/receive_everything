@@ -15,8 +15,8 @@
   <tbody>
     <% @inclusions.each do |inclusion| %>
       <tr>
-        <td><%= inclusion.product %></td>
-        <td><%= inclusion.meditation %></td>
+        <td><%= link_to_name inclusion.product %></td>
+        <td><%= link_to_name inclusion.meditation %></td>
         <td><%= inclusion.creator_id %></td>
         <td><%= link_to 'Show', inclusion %></td>
         <td><%= link_to 'Edit', edit_inclusion_path(inclusion) %></td>

@@ -21,6 +21,12 @@
     
     <% if current_creatrix %>
       <%= link_to 'creatrix sign out', destroy_creatrix_session_path, :method => :delete %>
+      <%= link_to 'meditations', meditations_path %>
+      <%= link_to 'products', products_path %>
+      <%= link_to 'inclusions', inclusions_path %>
+      <%= link_to 'prices', prices_path %>
+      <%= link_to 'mystics', mystics_path %>
+      <%= link_to 'accesses', accesses_path %>
     <% end %>
     
     <%= yield %>
