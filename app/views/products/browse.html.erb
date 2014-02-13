@@ -16,13 +16,6 @@
                 data-description="<%= product.name %>"
                 data-amount="<%= product.current_price_in_cents %>"></script>
       <% end %>
-      <ul>
-        <% product.meditations.each do |meditation| %>
-          <%= div_for meditation do %>
-            <%= meditation.name %>
-          <% end %>
-        <% end %>
-      </ul>
     <% end %>
   <% end %>
 </div>

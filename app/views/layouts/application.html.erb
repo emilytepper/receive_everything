@@ -12,11 +12,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
-    <% if current_mystic %>
-      <%= link_to 'View Products', browse_products_path %>
-      <%= link_to 'View Meditations', browse_meditations_path %>
-      <%= link_to 'log out', destroy_mystic_session_path, :method => :delete %>
-    <% else %>
+    <% unless current_mystic %>
       <%= link_to 'Create an account', '#registration_pane', :class => 'fancybox' %> or
       <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email') %>
     <% end %>
@@ -24,7 +20,6 @@
     <%= yield %>
 
   <nav id="footer">
-    <%= link_to 'Admin Panel', meditations_path %>
     <% if current_creatrix %>
       <%= link_to 'meditations', meditations_path %>
       <%= link_to 'products', products_path %>
@@ -34,6 +29,7 @@
       <%= link_to 'accesses', accesses_path %>
       <%= link_to 'sign out', destroy_creatrix_session_path, :method => :delete %>
     <% end %>
+    <%= link_to 'log out', destroy_mystic_session_path, :method => :delete if current_mystic %>
   </nav>
   
   <div id="registration_pane">
