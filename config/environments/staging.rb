@@ -13,6 +13,10 @@ ReceiveEverything::Application.configure do
   }
   config.action_mailer.default_url_options = { :host => 'http://imeditate-staging.herokuapp.com' }
 
+
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+  }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
