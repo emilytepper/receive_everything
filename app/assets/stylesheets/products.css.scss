@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.products {
+  width: 1300px;
+}
+
 .product {
   display: inline-block;
+  text-align: center;
+  padding-top: 80px;
+  font-size: 2em;
+  width: 200px;
+  height: 128px;
+  background-image: url('/assets/Emily_Tepper_watermark.png');
+}
+
+.amount .price {
+  font-size: 0.7em;
+  opacity: 0.8;
 }
