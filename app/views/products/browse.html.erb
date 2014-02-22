@@ -10,6 +10,11 @@
             <span class="price"><%= number_to_currency product.current_price_in_dollars %></span>
           </label>
         </article>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="<%= product.name %>"
+          data-amount="<%= product.current_price_in_cents %>">
+        </script>
       <% end %>
     <% end %>
   <% end %>
