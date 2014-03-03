@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @goddess.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @goddess.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @goddess.email %>
+</p>
+
+<p>
+  <strong>Personal statement:</strong>
+  <%= @goddess.personal_statement %>
+</p>
+
+<p>
+  <strong>Mystic:</strong>
+  <%= @goddess.mystic_id %>
+</p>
+
+<%= link_to 'Edit', edit_goddess_path(@goddess) %> |
+<%= link_to 'Back', goddesses_path %>

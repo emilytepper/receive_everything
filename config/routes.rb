@@ -1,4 +1,6 @@
-ReceiveEverything::Application.routes.draw do  resources :purchases
+ReceiveEverything::Application.routes.draw do
+  resources :goddesses
+  resources :purchases
 
   devise_for :creatrixes
   resources :prices

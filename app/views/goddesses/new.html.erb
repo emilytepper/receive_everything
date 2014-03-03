@@ -1,0 +1,29 @@
+<h1 id="goddess_title">Receptivity Goddess Group</h1>
+
+<%= image_tag 'RGG_short_sell.png', :id => 'left_goddess_flyer' %>
+
+<div id="manifestation">
+  Manifest now.
+  <%= link_to 'Register', '#new_goddess', :class => 'fancybox' %>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</div>
+
+<%= image_tag 'RGG_long_sell.png', :id => 'right_goddess_flyer' %>
+
+<div id="registration_pane">
+
+  <div id="new_goddess_holder">
+    <%= form_for Goddess.new, :remote => true do |f| %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %><br>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %><br>
+      <%= f.label :phone %>
+      <%= f.text_field :phone %><br>
+      <%= f.label :personal_statement %><br>
+      <%= f.text_area :personal_statement %><br>
+      <%= f.submit 'Join Us!' %>
+    <% end %>
+  </div>
+</div>

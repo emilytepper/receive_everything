@@ -1,0 +1,35 @@
+<h1>Listing goddesses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Personal statement</th>
+      <th>Mystic</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goddesses.each do |goddess| %>
+      <tr>
+        <td><%= goddess.first_name %></td>
+        <td><%= goddess.last_name %></td>
+        <td><%= goddess.email %></td>
+        <td><%= goddess.personal_statement %></td>
+        <td><%= goddess.mystic_id %></td>
+        <td><%= link_to 'Show', goddess %></td>
+        <td><%= link_to 'Edit', edit_goddess_path(goddess) %></td>
+        <td><%= link_to 'Destroy', goddess, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Goddess', new_goddess_path %>

@@ -2,20 +2,37 @@
   <% @products.each do |product| %>
     <%= div_for product do %>
       <%= product.name %>
+      <article>
+        <label class="amount">
+          <span class="price"><%= number_to_currency product.current_price_in_dollars %></span>
+        </label>
+      </article>
+      <script src="https://checkout.stripe.com/checkout.js"></script>
+      <script>
       
-      <%= form_tag purchases_path do %>
-        <%= hidden_field_tag :product_id, product.id %>
-        <article>
-          <label class="amount">
-            <span class="price"><%= number_to_currency product.current_price_in_dollars %></span>
-          </label>
-        </article>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="<%= product.name %>"
-          data-amount="<%= product.current_price_in_cents %>">
-        </script>
-      <% end %>
+        var <%= "purchasing_#{product.id}" %> = StripeCheckout.configure({
+          key: <%= Rails.configuration.stripe[:publishable_key] %>,
+          image: '/assets/Emily_Tepper_watermark.png',
+          token: function(token, args) {
+            // Use the token to create the charge with a server-side script.
+            // You can access the token ID with `token.id`
+            $.ajax({url: '/purchases', type: 'POST', data: {product_id: <%= product.id %>, stripeToken: token.id}});
+          }
+        });
+
+        $('#<%= dom_id product %>').click(function(e) {
+          // Open Checkout with further options
+          <%= "purchasing_#{product.id}" %>.open({
+            name: <%= product.name %>,
+            // description: <%= product.name %>,
+            amount: <%= product.current_price_in_cents %>
+          });
+          e.preventDefault();
+        });
+      </script>
     <% end %>
   <% end %>
+</div>
+<div id="goddess_group_opportunity">
+  <%= link_to 'Want more?', new_goddess_path %>
 </div>
