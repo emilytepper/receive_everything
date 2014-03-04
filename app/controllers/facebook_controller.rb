@@ -14,6 +14,10 @@ class FacebookController < ApplicationController
         sign_in @mystic
       end
     end
-    redirect_to root_url
+    if URI(request.referrer).path == 'goddesses/new'
+      redirect_to new_goddess_path
+    else
+      redirect_to root_url
+    end
   end
 end

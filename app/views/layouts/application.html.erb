@@ -6,6 +6,7 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= fb_connect_async_js %>
     <%= csrf_meta_tags %>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,700' rel='stylesheet' type='text/css'>
   </head>
   <body background-color="transparent">
@@ -33,6 +34,7 @@
   </nav>
   
   <div id="registration_pane">
+    <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email') %>
     <div id="sign_up">
       <h2>Sign up</h2>
 

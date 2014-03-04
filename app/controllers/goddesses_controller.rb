@@ -25,11 +25,19 @@ class GoddessesController < ApplicationController
   # POST /goddesses.json
   def create
     @goddess = Goddess.new(goddess_params)
+    @goddess.mystic = current_mystic
+    
+    # stripe_customer = Stripe::Customer.create current_mystic.stripe_id
+    
+    @subscription_customer = Stripe::Customer.create(:card => params[:stripe_token], :plan => 'Receptivity Goddess Group In-Person 2014', :email => @goddess.email)
+
+    unless current_mystic.stripe_id.present?
+      current_mystic.update_attribute :stripe_id, @subscription_customer.id
+    end
 
     respond_to do |format|
       if @goddess.save
-        format.js
-        format.html { redirect_to @goddess, notice: 'Goddess was successfully created.' }
+        format.html { redirect_to @goddess, notice: "I'm honored to have you in the group.  Our first meeting is April 6th from 7-9PM.  We'll send you an email reminder before the meeting." }
         format.json { render action: 'show', status: :created, location: @goddess }
       else
         format.html { render action: 'new' }
