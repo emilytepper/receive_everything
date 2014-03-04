@@ -1,6 +1,19 @@
 ReceiveEverything::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.mandrillapp.com',
+    port:                 587,
+    domain:               'receiveeverything.herokuapp.com',
+    user_name:            ENV['EMAIL_USERNAME'],
+    password:             ENV['EMAIL_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = { :host => 'http://receiveeverything.herokuapp.com' }
+
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
