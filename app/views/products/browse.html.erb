@@ -11,7 +11,7 @@
       <script>
       
         var <%= "purchasing_#{product.id}" %> = StripeCheckout.configure({
-          key: <%= Rails.configuration.stripe[:publishable_key] %>,
+          key: '<%= Rails.configuration.stripe[:publishable_key] %>',
           image: '/assets/Emily_Tepper_watermark.png',
           token: function(token, args) {
             // Use the token to create the charge with a server-side script.
