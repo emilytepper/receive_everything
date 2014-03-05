@@ -2,18 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#goddess_title {
-  text-align: center;
-}
-
-#left_goddess_flyer {
-  width: 45%;
-}
-
-#right_goddess_flyer {
-  width: 39%;
-}
-
 #manifestation {
   display: inline-block;
   height: 300px;
@@ -27,4 +15,8 @@
 
 #goddess_registration_pane {
   display: none;
+}
+
+#offer_flyer img {
+  width: 100%;
 }

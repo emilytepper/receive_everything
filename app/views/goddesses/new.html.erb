@@ -1,20 +1,14 @@
-<h1 id="goddess_title">Receptivity Goddess Group</h1>
-
-<%= image_tag 'RGG_short_sell.png', :id => 'left_goddess_flyer' %>
-
-<div id="manifestation">
-  Manifest now.
+<div id="offer_flyer">
   <% if current_mystic %>
-    <%= link_to 'Register', '#new_goddess_holder', :class => 'fancybox' %>
+    <%= link_to '#new_goddess_holder', :class => 'fancybox' do %>
+      <%= image_tag asset_path('RGG_long_sell.png') %>
+    <% end %>
   <% else %>
-    <%= link_to 'Register', '#registration_pane', :class => 'fancybox' %>
+    <%= link_to '#registration_pane', :class => 'fancybox' do %>
+      <%= image_tag asset_path('RGG_long_sell.png') %>
+    <% end %>
   <% end %>
-    
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
 </div>
-
-<%= image_tag 'RGG_long_sell.png', :id => 'right_goddess_flyer' %>
 
 <div id="goddess_registration_pane">
 
