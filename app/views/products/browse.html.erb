@@ -23,7 +23,7 @@
         $('#<%= dom_id product %>').click(function(e) {
           // Open Checkout with further options
           <%= "purchasing_#{product.id}" %>.open({
-            name: <%= product.name %>,
+            name: '<%= product.name %>',
             // description: <%= product.name %>,
             amount: <%= product.current_price_in_cents %>
           });
