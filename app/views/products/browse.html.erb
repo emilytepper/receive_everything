@@ -12,6 +12,8 @@
       <script src="https://checkout.stripe.com/checkout.js"></script>
       <script>
       
+        check_mystic_login()
+      
         var <%= "purchasing_#{product.id}" %> = StripeCheckout.configure({
           key: '<%= Rails.configuration.stripe[:publishable_key] %>',
           image: '/assets/Emily_Tepper_watermark.png',
@@ -23,12 +25,16 @@
         });
 
         $('#<%= dom_id product %>').click(function(e) {
-          // Open Checkout with further options
-          <%= "purchasing_#{product.id}" %>.open({
-            name: '<%= product.name %>',
-            // description: <%= product.name %>,
-            amount: <%= product.current_price_in_cents %>
-          });
+          if (mystic_logged_in) {
+            // Open Checkout with further options
+            <%= "purchasing_#{product.id}" %>.open({
+              name: '<%= product.name %>',
+              // description: <%= product.name %>,
+              amount: <%= product.current_price_in_cents %>
+            });
+          } else {
+            $('#login_signup_form_link').click();
+          }
           e.preventDefault();
         });
       </script>

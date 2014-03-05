@@ -14,7 +14,7 @@
     <p class="alert"><%= alert %></p>
     
     <% unless current_mystic %>
-      <%= link_to 'Create an account', '#registration_pane', :class => 'fancybox' %> or
+      <%= link_to 'Create an account', '#registration_pane', :class => 'fancybox', :id => 'login_signup_form_link' %> or
       <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email') %>
     <% end %>
 
