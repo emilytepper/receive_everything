@@ -1,0 +1,27 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+$ ->  
+  Stripe.setPublishableKey "<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>"
+  $("#payment_form").bind "submit", (event) ->
+    Stripe.card.createToken
+      number: $("#credit_card_number").val()
+      cvc: $("#cvv_code").val()
+      exp_month: $("#expiration_month").val()
+      exp_year: $("#expiration_year").val()
+    , stripeResponseHandler
+    event.preventDefault()
+    return
+
+  stripeResponseHandler = (status, response) ->
+    if response.error
+      $("#payment_errors").text response.error.message
+    else
+      goddess_form = $("#new_goddess")
+      token = response["id"]
+      goddess_form.append "<input type='hidden' name='stripe_token' value='" + token + "'/>"
+      goddess_form.get(0).submit()
+    return
+
+  $('.fancybox').fancybox()

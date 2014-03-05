@@ -11,7 +11,6 @@
 </div>
 
 <div id="goddess_registration_pane">
-
   <div id="new_goddess_holder">
     <%= form_for Goddess.new do |f| %>
       <%= f.label :first_name %>
@@ -37,33 +36,3 @@
     <% end %>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(function() {
-    Stripe.setPublishableKey('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-  
-    $('#payment_form').bind('submit', function(event) {
-      Stripe.card.createToken({
-        number: $('#credit_card_number').val(),
-        cvc: $('#cvv_code').val(),
-        exp_month: $('#expiration_month').val(),
-        exp_year: $('#expiration_year').val()
-      }, stripeResponseHandler);
-      event.preventDefault();
-    });
-    
-    stripeResponseHandler = function(status, response) {
-      if (response.error) {
-        $("#payment_errors").text(response.error.message);
-      } else {
-        var goddess_form = $("#new_goddess");
-        // token contains id, last4, and card type
-        var token = response['id'];
-        // insert the token into the form so it gets submitted to the server
-        goddess_form.append("<input type='hidden' name='stripe_token' value='" + token + "'/>");
-        // and submit
-        goddess_form.get(0).submit();
-      }
-    }
-  });
-</script>
