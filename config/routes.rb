@@ -29,7 +29,11 @@ ReceiveEverything::Application.routes.draw do
   end
 
   devise_for :mystics
-  resources :mystics
+  resources :mystics do
+    collection do
+      get :logged_in
+    end
+  end
   get 'facebook_new_session' => 'facebook#new_session', :as => 'new_session_facebook'
   
   root :to => 'products#browse'

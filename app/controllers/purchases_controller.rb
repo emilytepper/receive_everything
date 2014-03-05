@@ -23,6 +23,8 @@ class PurchasesController < ApplicationController
     )
     
     if charge.paid
+      Purchase.create :mystic => current_mystic, :product => @product, :price => @product.current_price
+      
       @product.meditations.each do |meditation|
         current_mystic.accesses.create :meditation => meditation
       end

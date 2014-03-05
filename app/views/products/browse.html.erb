@@ -3,9 +3,11 @@
     <%= div_for product do %>
       <%= product.name %>
       <article>
-        <label class="amount">
-          <span class="price"><%= number_to_currency product.current_price_in_dollars %></span>
-        </label>
+        <% unless current_mystic.andand.has_access_to_product?(product) %>
+          <label class="amount">
+            <span class="price"><%= number_to_currency product.current_price_in_dollars %></span>
+          </label>
+        <% end %>
       </article>
       <script src="https://checkout.stripe.com/checkout.js"></script>
       <script>

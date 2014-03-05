@@ -1,6 +1,14 @@
 class MysticsController < ApplicationController
   before_action :set_mystic, only: [:show, :edit, :update, :destroy]
 
+  def logged_in
+    if current_mystic
+      render :text => 'yes'
+    else
+      render :text => 'no'
+    end
+  end
+
   # GET /mystics
   # GET /mystics.json
   def index
