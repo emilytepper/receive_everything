@@ -13,6 +13,10 @@
 <div id="goddess_registration_pane">
   <div id="new_goddess_holder">
     <%= form_for Goddess.new do |f| %>
+      <%= f.radio_button :group_choice, 'In-Person' %>
+      <%= f.label :group_choice, 'In-Person (Mon 7-9)' %>
+      <%= f.radio_button :group_choice, 'Online' %>
+      <%= f.label :group_choice, 'Online (Thu 1-3)' %><br>
       <%= f.label :first_name %>
       <%= f.text_field :first_name %><br>
       <%= f.label :last_name %>

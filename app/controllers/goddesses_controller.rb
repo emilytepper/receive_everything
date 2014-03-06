@@ -29,7 +29,13 @@ class GoddessesController < ApplicationController
     
     # stripe_customer = Stripe::Customer.create current_mystic.stripe_id
     
-    @subscription_customer = Stripe::Customer.create(:card => params[:stripe_token], :plan => 'Receptivity Goddess Group In-Person 2014', :email => @goddess.email)
+    if @goddess.group_choice == 'In-Person'
+      @plan = 'Receptivity Goddess Group In-Person 2014'
+    else
+      @plan = 'Receptivity Goddess Group Online 2014'
+    end
+    
+    @subscription_customer = Stripe::Customer.create(:card => params[:stripe_token], :plan => @plan, :email => @goddess.email)
 
     unless current_mystic.stripe_id.present?
       current_mystic.update_attribute :stripe_id, @subscription_customer.id
