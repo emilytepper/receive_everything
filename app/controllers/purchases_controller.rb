@@ -36,10 +36,9 @@ class PurchasesController < ApplicationController
       end
     end
 
-    redirect_to root_url
+    render :nothing => true
 
   rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to root_url
+    Rails.logger.error e.message
   end
 end
