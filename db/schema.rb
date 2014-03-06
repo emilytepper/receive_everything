@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305224205) do
+ActiveRecord::Schema.define(version: 20140306151717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140305224205) do
     t.integer  "mystic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "group_choice"
   end
 
   create_table "inclusions", force: true do |t|

@@ -31,8 +31,10 @@ class GoddessesController < ApplicationController
     
     if @goddess.group_choice == 'In-Person'
       @plan = 'Receptivity Goddess Group In-Person 2014'
+      @meeting_time = "April 6th from 7-9PM"
     else
       @plan = 'Receptivity Goddess Group Online 2014'
+      @meeting_time = "April 3rd from 1-3PM"
     end
     
     @subscription_customer = Stripe::Customer.create(:card => params[:stripe_token], :plan => @plan, :email => @goddess.email)
@@ -43,7 +45,7 @@ class GoddessesController < ApplicationController
 
     respond_to do |format|
       if @goddess.save
-        format.html { redirect_to @goddess, notice: "I'm honored to have you in the group.  Our first meeting is April 6th from 7-9PM.  We'll send you an email reminder before the meeting." }
+        format.html { redirect_to @goddess, notice: "I'm honored to have you in the group, #{@goddess.first_name}.  Our first meeting is #{@meeting_time}.  We'll send you an email reminder before the meeting." }
         format.json { render action: 'show', status: :created, location: @goddess }
       else
         format.html { render action: 'new' }
@@ -84,6 +86,6 @@ class GoddessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goddess_params
-      params.require(:goddess).permit(:first_name, :last_name, :email, :personal_statement, :mystic_id)
+      params.require(:goddess).permit(:first_name, :last_name, :email, :personal_statement, :mystic_id, :group_choice)
     end
 end

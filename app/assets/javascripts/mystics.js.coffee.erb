@@ -5,14 +5,14 @@
 $ ->  
   Stripe.setPublishableKey "<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>"
   $("#payment_form").bind "submit", (event) ->
-    Stripe.card.createToken
-      number: $("#credit_card_number").val()
-      cvc: $("#cvv_code").val()
-      exp_month: $("#expiration_month").val()
-      exp_year: $("#expiration_year").val()
-    , stripeResponseHandler
+    if($('#new_goddess').valid())
+      Stripe.card.createToken
+        number: $("#credit_card_number").val()
+        cvc: $("#cvv_code").val()
+        exp_month: $("#expiration_month").val()
+        exp_year: $("#expiration_year").val()
+      , stripeResponseHandler
     event.preventDefault()
-    return
 
   stripeResponseHandler = (status, response) ->
     if response.error
@@ -22,6 +22,5 @@ $ ->
       token = response["id"]
       goddess_form.append "<input type='hidden' name='stripe_token' value='" + token + "'/>"
       goddess_form.get(0).submit()
-    return
 
   $('.fancybox').fancybox()
