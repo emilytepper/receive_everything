@@ -1,0 +1,10 @@
+<% @product.meditations.each do |meditation| %>
+  <%= div_for meditation do %>
+    <header>
+      <%= meditation.name %>
+    </header>
+    <section>
+      <%= meditation.embed.html_safe %>
+    </section>
+  <% end %>
+<% end %>

@@ -1,6 +1,10 @@
 ReceiveEverything::Application.routes.draw do
   resources :goddesses
-  resources :purchases
+  resources :purchases do
+    collection do
+      get :mine
+    end
+  end
 
   devise_for :creatrixes
   resources :prices
@@ -11,6 +15,7 @@ ReceiveEverything::Application.routes.draw do
   resources :products do
     resources :inclusions
     member do
+      get :display
       put :move_higher
       put :move_lower
     end

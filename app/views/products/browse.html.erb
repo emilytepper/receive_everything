@@ -1,3 +1,7 @@
+<script>
+  check_mystic_login();
+  check_mystic_purchases();
+</script>
 <div id="products">
   <% @products.each do |product| %>
     <%= div_for product do %>
@@ -10,28 +14,25 @@
         <% end %>
       </article>
       <script src="https://checkout.stripe.com/checkout.js"></script>
-      <script>
-      
-        check_mystic_login()
-      
+      <script>      
         var <%= "purchasing_#{product.id}" %> = StripeCheckout.configure({
           key: '<%= Rails.configuration.stripe[:publishable_key] %>',
           image: '/assets/Emily_Tepper_watermark.png',
           token: function(token, args) {
-            // Use the token to create the charge with a server-side script.
-            // You can access the token ID with `token.id`
             $.ajax({url: '/purchases', type: 'POST', data: {product_id: <%= product.id %>, stripeToken: token.id}});
           }
         });
 
         $('#<%= dom_id product %>').click(function(e) {
           if (mystic_logged_in) {
-            // Open Checkout with further options
-            <%= "purchasing_#{product.id}" %>.open({
-              name: '<%= product.name %>',
-              // description: <%= product.name %>,
-              amount: <%= product.current_price_in_cents %>
-            });
+            if ($.inArray(<%= product.id %>, mystic_purchases) != -1) {
+              window.location = '/products/<%= product.id %>/display'; 
+            } else {
+              <%= "purchasing_#{product.id}" %>.open({
+                name: '<%= product.name %>',
+                amount: <%= product.current_price_in_cents %>
+              });
+            }
           } else {
             $('#login_signup_form_link').click();
           }

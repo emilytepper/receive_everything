@@ -1,9 +1,14 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :move_higher, :move_lower, :destroy]
-  before_action :authenticate_creatrix!, :except => :browse
+  before_action :set_product, only: [:display, :show, :edit, :update, :move_higher, :move_lower, :destroy]
+  before_action :authenticate_creatrix!, :except => [:browse, :display]
+  before_action :authenticate_mystic!, :only => :display
 
   def browse
     @products = Product.ordered.active
+  end
+  
+  def display
+    (redirect_to(root_url) && return) unless current_mystic.has_access_to_product? @product
   end
 
   # GET /products

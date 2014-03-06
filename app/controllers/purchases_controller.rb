@@ -1,4 +1,10 @@
 class PurchasesController < ApplicationController
+  def mine
+    @purchases = current_mystic.purchases
+    @products = @purchases.map(&:product_id)
+    render :json => @products
+  end
+  
   def new
   end
 
