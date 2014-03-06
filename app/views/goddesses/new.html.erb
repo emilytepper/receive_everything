@@ -12,11 +12,13 @@
 
 <div id="goddess_registration_pane">
   <div id="new_goddess_holder">
+    <i>Please fill out all fields and select the <span class="meeting_time">monthly meeting time</span> that works for you.<br>  Both groups will meet towards the beginning of each month.</i>
+    <hr>
     <%= form_for Goddess.new do |f| %>
       <%= f.radio_button :group_choice, 'In-Person' %>
-      <%= f.label :group_choice, 'In-Person (Mon 7-9)' %>
+      <%= f.label :group_choice, 'In-Person' %>  <span class="meeting_time">(Mon 7-9)</span>
       <%= f.radio_button :group_choice, 'Online' %>
-      <%= f.label :group_choice, 'Online (Thu 1-3)' %><br>
+      <%= f.label :group_choice, 'Online' %>  <span class="meeting_time">(Thu 1-3)</span><br>
       <%= f.label :first_name %>
       <%= f.text_field :first_name %><br>
       <%= f.label :last_name %>
@@ -31,8 +33,8 @@
       <%= label_tag :credit_card_number %>
       <%= text_field_tag :credit_card_number, nil, :size => 30 %><br>
       <%= label_tag :expiration_date %>
-      <%= select_tag :expiration_month, options_for_select(['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']) %>
-      <%= select_tag :expiration_year, options_for_select((Date.today.year..Date.today.year + 15).to_a) %><br>
+      <%= select_tag :expiration_month, options_for_select(['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']), :include_blank => true %>
+      <%= select_tag :expiration_year, options_for_select((Date.today.year..Date.today.year + 15).to_a), :include_blank => true %><br>
       <%= label_tag :cvv_code, 'CVV Code' %>
       <%= text_field_tag :cvv_code, nil, :size => 5 %><br>
       <%= submit_tag 'Join the Goddess Group!', :id => 'goddess_form_submit_button' %><br>

@@ -8,11 +8,6 @@
   font-size: 1.5em;
 }
 
-#goddess_personal_statement {
-  width: 181px;
-  height: 65px;
-}
-
 #goddess_registration_pane {
   display: none;
 }
@@ -28,4 +23,43 @@ label.error {
 
 #payment_errors {
   color: red;
+}
+
+.meeting_time {
+  color: #1D74BB;
+}
+
+#new_goddess_holder {
+  input#goddess_group_choice_in-person {
+    margin-left: 50px;
+  }
+  input#goddess_group_choice_online {
+    margin-left: 70px;
+  }
+  
+  input#goddess_first_name {
+    margin-left: 30px;
+  }
+  input#goddess_last_name {
+    margin-left: 31px;
+  }
+  input#goddess_phone {
+    margin-left: 53px;
+  }
+  #goddess_personal_statement {
+    width: 95%;
+    height: 65px;
+  }
+  input#credit_card_number {
+    margin-left: 10px;
+  }
+  select#expiration_month {
+    margin-left: 38px;
+  }
+  input#cvv_code {
+    margin-left: 65px;
+  }
+  input#goddess_form_submit_button {
+    width: 100%;
+  }
 }
