@@ -1,3 +1,4 @@
+<%= link_to '<= Back to iseries Meditations', root_url %>
 <div id="offer_flyer">
   <% if current_mystic %>
     <%= link_to '#new_goddess_holder', :class => 'fancybox' do %>
@@ -16,9 +17,9 @@
     <hr>
     <%= form_for Goddess.new do |f| %>
       <%= f.radio_button :group_choice, 'In-Person' %>
-      <%= f.label :group_choice, 'In-Person' %>  <span class="meeting_time">(Mon 7-9)</span>
+      <%= f.label :group_choice, 'In-Person North Brooklyn' %>  <span class="meeting_time">(Mon 7-9PM)</span>
       <%= f.radio_button :group_choice, 'Online' %>
-      <%= f.label :group_choice, 'Online' %>  <span class="meeting_time">(Thu 1-3)</span><br>
+      <%= f.label :group_choice, 'Online' %>  <span class="meeting_time">(Thu 1-3PM)</span><br>
       <%= f.label :first_name %>
       <%= f.text_field :first_name %><br>
       <%= f.label :last_name %>
