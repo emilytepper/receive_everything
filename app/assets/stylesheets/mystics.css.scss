@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#goddess_group_opportunity {
+  text-align: center;
+}
+
+#goddess_wants_more {
+  font-size: 2em;
+  width: 100%;
+  padding: 20px;
+  text-decoration: none;
+}
+
+#goddess_wants_more:hover {
+  background-color: #CA3CB3;
+};
+
 #registration_pane {
   display: none;
 }

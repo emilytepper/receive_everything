@@ -10,11 +10,11 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,700' rel='stylesheet' type='text/css'>
   </head>
   <body background-color="transparent">
-    <p class="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
     <% unless current_mystic %>
-      <%= link_to 'Create an account', '#registration_pane', :class => 'fancybox', :id => 'login_signup_form_link' %> or
+      <%= link_to 'Create an account / Sign in', '#registration_pane', :class => 'fancybox', :id => 'login_signup_form_link' %> or
       <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email') %>
     <% end %>
 
