@@ -9,8 +9,9 @@ class FacebookController < ApplicationController
         @mystic.confirm!
         sign_in @mystic
       else
-        @mystic = Mystic.create :email => current_facebook_user.email, :facebook_id => current_facebook_user.id
-        @mystic.confirm!
+        @mystic = Mystic.new :email => current_facebook_user.email, :facebook_id => current_facebook_user.id
+        @mystic.skip_confirmation!
+        @mystic.save
         sign_in @mystic
       end
     end
