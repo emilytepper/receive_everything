@@ -26,21 +26,35 @@
           }
         });
 
-        $('#<%= dom_id product %>').click(function(e) {
-          if (mystic_logged_in) {
-            if ($.inArray(<%= product.id %>, mystic_purchases) != -1) {
-              window.location = '/products/<%= product.id %>/display'; 
+        <% if product.current_price_in_cents > 0 %>
+
+          $('#<%= dom_id product %>').click(function(e) {
+            if (mystic_logged_in) {
+              if ($.inArray(<%= product.id %>, mystic_purchases) != -1) {
+                window.location = '/products/<%= product.id %>/display'; 
+              } else {
+                <%= "purchasing_#{product.id}" %>.open({
+                  name: '<%= product.name %>',
+                  amount: <%= product.current_price_in_cents %>
+                });
+              }
             } else {
-              <%= "purchasing_#{product.id}" %>.open({
-                name: '<%= product.name %>',
-                amount: <%= product.current_price_in_cents %>
-              });
+              $('#login_signup_form_link').click();
             }
-          } else {
-            $('#login_signup_form_link').click();
-          }
-          e.preventDefault();
-        });
+            e.preventDefault();
+          });
+          
+        <% else %>
+        
+          $('#<%= dom_id product %>').click(function(e) {
+            if (mystic_logged_in) {
+              window.location = '/products/<%= product.id %>/display';
+            } else {
+              $('#login_signup_form_link').click();
+            }
+          });
+          
+        <% end %>
       </script>
     <% end %>
   <% end %>
