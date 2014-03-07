@@ -1,3 +1,6 @@
+<%= link_to 'Review all our products', browse_products_path %>
+<%= link_to_function 'Learn about the Receptivity Goddess Group', "window.location = '/goddesses/new'" %>
+
 <% @product.meditations.each do |meditation| %>
   <%= div_for meditation do %>
     <header>
