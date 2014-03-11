@@ -37,6 +37,9 @@ gem 'facebooker2'
 # credit card processing with Stripe
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
+# aweber email service api
+gem 'aweber'
+
 # utility for nil-checking
 gem 'andand'
 

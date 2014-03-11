@@ -49,6 +49,9 @@ GEM
     andand (1.3.3)
     arel (4.0.1)
     atomic (1.1.14)
+    aweber (1.6.1)
+      json
+      oauth
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
     coffee-rails (4.0.1)
@@ -101,6 +104,7 @@ GEM
     multi_json (1.8.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    oauth (0.4.7)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
@@ -183,6 +187,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   andand
+  aweber
   coffee-rails (~> 4.0.0)
   debugger
   devise
