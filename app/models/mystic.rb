@@ -32,7 +32,7 @@ class Mystic < ActiveRecord::Base
       aweber = AWeber::Base.new oauth
       receive_everything_mailing_list = aweber.account.lists.find_by_name ENV['AWEBER_MAILING_LIST_NAME']
       receive_everything_mailing_list.subscribers.create 'email' => email
-    rescue StandardError => error
+    rescue StandardError, AWeber::OAuthError, AWeber::NotFoundError, AWeber::UnknownRequestError, AWeber::RateLimitError, AWeber::ForbiddenRequestError, AWeber::CreationError => error
       Rails.logger.error error.inspect
     end
   end
