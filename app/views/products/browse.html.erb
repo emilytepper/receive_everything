@@ -17,7 +17,7 @@
       <script>      
         var <%= "purchasing_#{product.id}" %> = StripeCheckout.configure({
           key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-          image: '/assets/Emily_Tepper_watermark.png',
+          image: <%= asset_path 'Emily_Tepper_watermark.png' %>,
           token: function(token, args) {
             $.ajax({url: '/purchases', type: 'POST', data: {product_id: <%= product.id %>, stripeToken: token.id}});
           },
