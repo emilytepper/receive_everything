@@ -20,4 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  gift:
+    initiate:
+      subject: "This is your gift from receiveEverything.com"

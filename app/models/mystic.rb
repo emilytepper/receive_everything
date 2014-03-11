@@ -3,7 +3,7 @@ class Mystic < ActiveRecord::Base
   has_many :meditations, :through => :accesses
   has_many :purchases
 
-  after_create :gain_access_to_free_meditations, :send_email_to_aweber
+  after_create :gain_access_to_free_meditations, :send_email_to_aweber, :deliver_gift_email
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
   
@@ -31,5 +31,9 @@ class Mystic < ActiveRecord::Base
     aweber = AWeber::Base.new oauth
     receive_everything_mailing_list = aweber.account.lists.find_by_name ENV['AWEBER_MAILING_LIST_NAME']
     receive_everything_mailing_list.subscribers.create 'email' => email
+  end
+  
+  def deliver_gift_email
+    Gift.initiate(self).deliver
   end
 end
