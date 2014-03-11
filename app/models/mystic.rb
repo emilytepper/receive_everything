@@ -3,7 +3,7 @@ class Mystic < ActiveRecord::Base
   has_many :meditations, :through => :accesses
   has_many :purchases
 
-  after_create :gain_access_to_free_meditations
+  after_create :gain_access_to_free_meditations, :send_email_to_aweber
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
   
@@ -23,5 +23,13 @@ class Mystic < ActiveRecord::Base
     Meditation.free.each do |meditation|
       accesses.create :meditation => meditation
     end
+  end
+  
+  def send_email_to_aweber
+    oauth = AWeber::OAuth.new ENV['AWEBER_CONSUMER_KEY'], ENV['AWEBER_CONSMER_SECRET']
+    oauth.authorize_with_access ENV['AWEBER_ACCESS_TOKEN'], ENV['AWEBER_ACCESS_TOKEN_SECRET']
+    aweber = AWeber::Base.new oauth
+    receive_everything_mailing_list = aweber.account.lists.find_by_name ENV['AWEBER_MAILING_LIST_NAME']
+    receive_everything_mailing_list.subscribers.create 'email' => email
   end
 end
