@@ -26,7 +26,7 @@ class Mystic < ActiveRecord::Base
   end
   
   def send_email_to_aweber
-    oauth = AWeber::OAuth.new ENV['AWEBER_CONSUMER_KEY'], ENV['AWEBER_CONSMER_SECRET']
+    oauth = AWeber::OAuth.new ENV['AWEBER_CONSUMER_KEY'], ENV['AWEBER_CONSUMER_SECRET']
     oauth.authorize_with_access ENV['AWEBER_ACCESS_TOKEN'], ENV['AWEBER_ACCESS_TOKEN_SECRET']
     aweber = AWeber::Base.new oauth
     receive_everything_mailing_list = aweber.account.lists.find_by_name ENV['AWEBER_MAILING_LIST_NAME']
