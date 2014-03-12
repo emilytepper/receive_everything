@@ -21,10 +21,9 @@ class FacebookController < ApplicationController
         sign_in @mystic
       end
     end
-    if URI(request.referrer).path == 'goddesses/new'
+    if URI(request.referrer).path == '/goddesses/new'
       redirect_to new_goddess_path
     else
-      Rails.logger.info "request.referrer = #{URI(request.referrer)}"
       redirect_to root_url
     end
   end
