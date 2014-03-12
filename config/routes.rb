@@ -1,4 +1,6 @@
 ReceiveEverything::Application.routes.draw do
+  resources :share_links
+
   resources :goddesses
   resources :purchases do
     collection do

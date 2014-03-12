@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @share_link.url %>
+</p>
+
+<p>
+  <strong>Clicks:</strong>
+  <%= @share_link.clicks %>
+</p>
+
+<p>
+  <strong>Shares:</strong>
+  <%= @share_link.shares %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @share_link.description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @share_link.image %>
+</p>
+
+<%= link_to 'Edit', edit_share_link_path(@share_link) %> |
+<%= link_to 'Back', share_links_path %>

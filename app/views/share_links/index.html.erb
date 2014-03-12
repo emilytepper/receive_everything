@@ -1,0 +1,36 @@
+<h1>Listing share_links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Clicks</th>
+      <th>Shares</th>
+      <th>Creatrix</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @share_links.each do |share_link| %>
+      <tr>
+        <td><%= share_link.url %></td>
+        <td><%= share_link.clicks %></td>
+        <td><%= share_link.shares %></td>
+        <td><%= share_link.description %></td>
+        <td><%= share_link.image %></td>
+        <td><%= link_to 'Show', share_link %></td>
+        <td><%= link_to 'Edit', edit_share_link_path(share_link) %></td>
+        <td><%= link_to 'Destroy', share_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Share link', new_share_link_path %>

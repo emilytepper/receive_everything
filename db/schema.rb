@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306151717) do
+ActiveRecord::Schema.define(version: 20140312210813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,5 +151,18 @@ ActiveRecord::Schema.define(version: 20140306151717) do
   add_index "purchases", ["mystic_id"], name: "index_purchases_on_mystic_id", using: :btree
   add_index "purchases", ["price_id"], name: "index_purchases_on_price_id", using: :btree
   add_index "purchases", ["product_id"], name: "index_purchases_on_product_id", using: :btree
+
+  create_table "share_links", force: true do |t|
+    t.string   "url"
+    t.integer  "clicks"
+    t.integer  "shares"
+    t.integer  "creatrix_id"
+    t.text     "description"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "share_links", ["creatrix_id"], name: "index_share_links_on_creatrix_id", using: :btree
 
 end
