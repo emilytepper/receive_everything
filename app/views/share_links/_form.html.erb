@@ -16,23 +16,15 @@
     <%= f.text_field :url %>
   </div>
   <div class="field">
-    <%= f.label :clicks %><br>
-    <%= f.number_field :clicks %>
-  </div>
-  <div class="field">
-    <%= f.label :shares %><br>
-    <%= f.number_field :shares %>
-  </div>
-  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
   <div class="field">
     <%= f.label :image %><br>
-    <%= f.text_field :image %>
+    <%= f.file_field :image %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
-  <%= f.hidden_field :creatrix_id, current_creatrix.id %>
+  <%= f.hidden_field :creatrix_id, :value => current_creatrix.id %>
 <% end %>

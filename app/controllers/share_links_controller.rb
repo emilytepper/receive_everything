@@ -1,5 +1,10 @@
 class ShareLinksController < ApplicationController
-  before_action :set_share_link, only: [:show, :edit, :update, :destroy]
+  before_action :set_share_link, only: [:sharer, :show, :edit, :update, :destroy]
+  before_action :authenticate_creatrix!, except: :sharer
+
+  def sharer
+    
+  end
 
   # GET /share_links
   # GET /share_links.json

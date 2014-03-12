@@ -1,5 +1,9 @@
 ReceiveEverything::Application.routes.draw do
-  resources :share_links
+  resources :share_links do
+    member do
+      get :sharer
+    end
+  end
 
   resources :goddesses
   resources :purchases do

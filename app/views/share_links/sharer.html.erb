@@ -1,0 +1,38 @@
+<script type='text/javascript'>
+  share_it = function() {
+    FB.login(function(response) {
+      if(response.authResponse) {
+        FB.api('/me/feed', 'post', { message: '<%= @share_link.description %>', link: '<%= @share_link.url %>' }, function(response) {
+          if (!response || response.error) {
+        
+          } else {
+            alert('Thank you ever so much.  I am very excited to see what your Facebook friends bring to my community.  You can tell them I said so!');
+          }
+        });
+      } else {
+
+      }
+    });
+  }
+</script>
+
+<script>
+$(function() {
+  
+});
+</script>
+<div>
+  <%= @share_link.description %>
+</div>
+
+<div>
+  The URL you are asked to share: <%= @share_link.url %>
+  <%= link_to @share_link.url, @share_link.url, :target => '_blank' %>
+</div>
+
+<div id="sharer_hider">
+  <div id="sharer_prompter">
+    Ready to share this message and URL?
+    <%= link_to 'Yes.', '#', :onclick => 'share_it();' %>
+  </div>
+</div>
