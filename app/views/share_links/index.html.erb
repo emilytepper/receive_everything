@@ -4,9 +4,9 @@
   <thead>
     <tr>
       <th>Url</th>
+      <th>Sharable Link</th>
       <th>Clicks</th>
       <th>Shares</th>
-      <th>Creatrix</th>
       <th>Description</th>
       <th>Image</th>
       <th></th>
@@ -19,6 +19,7 @@
     <% @share_links.each do |share_link| %>
       <tr>
         <td><%= share_link.url %></td>
+        <td><%= sharer_share_link_url share_link %></td>
         <td><%= share_link.clicks %></td>
         <td><%= share_link.shares %></td>
         <td><%= share_link.description %></td>

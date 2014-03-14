@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<p id="sharable_link">
+  Here is the link you should share.
+  <%= sharer_share_link_url @share_link %>
+</p>
+
 <p>
   <strong>Url:</strong>
   <%= @share_link.url %>
