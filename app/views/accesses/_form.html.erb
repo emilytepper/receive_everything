@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :meditation_id %><br>
-    <%= f.text_field :meditation_id %>
+    <%= f.select :meditation_id, options_from_collection_for_select(Meditation.all, :id, :name, @access.meditation_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :mystic_id %><br>
-    <%= f.text_field :mystic_id %>
+    <%= f.select :mystic_id, options_from_collection_for_select(Mystic.all, :id, :email, @access.mystic_id), :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>
