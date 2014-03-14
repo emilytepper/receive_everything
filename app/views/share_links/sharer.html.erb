@@ -21,12 +21,12 @@ $(function() {
   
 });
 </script>
-<div>
+<div id="share_link_description">
   <%= @share_link.description %>
 </div>
 
-<div>
-  The URL you are asked to share: <%= @share_link.url %>
+<div id="sharable_link">
+  The URL you are asked to share: 
   <%= link_to @share_link.url, @share_link.url, :target => '_blank' %>
 </div>
 
