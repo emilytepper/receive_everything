@@ -1,6 +1,6 @@
 class ShareLinksController < ApplicationController
   before_action :set_share_link, only: [:sharer, :show, :edit, :update, :destroy]
-  before_action :authenticate_creatrix!, except: :sharer
+  before_action :authenticate_creatrix!, except: [:sharer, :shared]
 
   def sharer
     @share_link.clicks = @share_link.clicks.to_i + 1

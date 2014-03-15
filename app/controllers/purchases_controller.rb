@@ -1,6 +1,10 @@
 class PurchasesController < ApplicationController
   def mine
-    @products = Product.active.select { |product| current_mystic.has_access_to_product? product }
+    if current_mystic
+      @products = Product.active.select { |product| current_mystic.has_access_to_product? product }
+    else
+      @products = []
+    end
     render :json => @products.map(&:id)
   end
   
