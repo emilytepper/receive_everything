@@ -7,7 +7,8 @@
         
           } else {
             alert('Thank you ever so much.  I am very excited to see what your Facebook friends bring to my community.  You can tell them I said so!');
-            $.ajax({'url': '<%= new_session_facebook_path %>'});
+            $.ajax({'url': '<%= shared_share_link_path @share_link %>', 'type': 'PUT'});
+            window.location = '<%= new_session_facebook_path %>';
           }
         });
       } else {

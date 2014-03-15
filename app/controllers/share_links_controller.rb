@@ -3,7 +3,14 @@ class ShareLinksController < ApplicationController
   before_action :authenticate_creatrix!, except: :sharer
 
   def sharer
-    
+    @share_link.clicks = @share_link.clicks.to_i + 1
+    @share_link.save
+  end
+  
+  def shared
+    @share_link.shares = @share_link.shares.to_i + 1
+    @share_link.save
+    render :nothing => true
   end
 
   # GET /share_links

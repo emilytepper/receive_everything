@@ -2,6 +2,7 @@ ReceiveEverything::Application.routes.draw do
   resources :share_links do
     member do
       get :sharer
+      put :shared
     end
   end
 
