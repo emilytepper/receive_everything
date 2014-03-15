@@ -12,16 +12,16 @@
           }
         });
       } else {
-
+        $('#non_authorized_sharer_link').click()
       }
     }, {'scope': ['publish_actions', 'email']});
   }
 </script>
 
-<script>
-$(function() {
-  
-});
+<script type="text/javascript">
+  $(function() {
+    $('#non_authorized_sharer_link').fancybox();
+  });
 </script>
 <div id="share_link_description">
   <%= @share_link.description %>
@@ -36,5 +36,15 @@ $(function() {
   <div id="sharer_prompter">
     Ready to share this message and URL?
     <%= link_to 'Yes.', '#', :onclick => 'share_it();' %>
+  </div>
+</div>
+
+<div id="non_authorized_option">
+  <%= link_to 'Share without authorizing our Facebook app', '#non_authorized_sharer', :id => 'non_authorized_sharer_link' %>
+</div>
+
+<div id="non_authorized_sharer_hider">
+  <div id="non_authorized_sharer">
+    <%= link_to 'Share the link without using that Facebook app', "https://www.facebook.com/sharer/sharer.php?u=#{@share_link.url}", :target => '_blank' %>
   </div>
 </div>

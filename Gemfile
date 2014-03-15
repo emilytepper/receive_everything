@@ -49,6 +49,9 @@ gem 'acts_as_list'
 # deployment compatibility with heroku
 gem 'rails_12factor', group: :production
 
+# restores jquery onload event handling
+gem 'jquery-turbolinks'
+
 gem 'quiet_assets', group: :development
 
 group :doc do
