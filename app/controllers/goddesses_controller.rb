@@ -30,10 +30,10 @@ class GoddessesController < ApplicationController
     # stripe_customer = Stripe::Customer.create current_mystic.stripe_id
     
     if @goddess.group_choice == 'In-Person'
-      @plan = 'Receptivity Goddess Group In-Person 2014'
+      @plan = 'Receptivity Goddess Group In-Person With Trial'
       @meeting_time = "April 6th from 7-9PM"
     else
-      @plan = 'Receptivity Goddess Group Online 2014'
+      @plan = 'Receptivity Goddess Group Online With Trial'
       @meeting_time = "April 3rd from 1-3PM"
     end
     
