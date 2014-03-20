@@ -1,11 +1,11 @@
 class InclusionsController < ApplicationController
-  before_action :set_inclusion, only: [:show, :edit, :update, :destroy]
+  before_action :set_inclusion, only: [:show, :edit, :update, :move_higher, :move_lower, :destroy]
   before_action :authenticate_creatrix!
 
   # GET /inclusions
   # GET /inclusions.json
   def index
-    @inclusions = Inclusion.all
+    @inclusions = Product.ordered.map(&:inclusions).flatten
   end
 
   # GET /inclusions/1
@@ -50,6 +50,16 @@ class InclusionsController < ApplicationController
         format.json { render json: @inclusion.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_higher
+    @inclusion.move_higher
+    redirect_to inclusions_path
+  end
+  
+  def move_lower
+    @inclusion.move_lower
+    redirect_to inclusions_path
   end
 
   # DELETE /inclusions/1

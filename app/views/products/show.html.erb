@@ -23,5 +23,13 @@
   <%= @product.creator_id %>
 </p>
 
+<div>
+  <% @product.meditations.each do |meditation| %>
+    <div>
+      <%= link_to_name meditation %>
+    </div>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

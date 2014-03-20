@@ -52,6 +52,9 @@ gem 'rails_12factor', group: :production
 # restores jquery onload event handling
 gem 'jquery-turbolinks'
 
+# designate the ordering of objects in a list
+gem 'acts_as_list'
+
 gem 'quiet_assets', group: :development
 
 group :doc do

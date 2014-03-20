@@ -16,7 +16,13 @@ ReceiveEverything::Application.routes.draw do
   devise_for :creatrixes
   resources :prices
 
-  resources :inclusions
+  resources :inclusions do
+    member do
+      put :move_higher
+      put :move_lower
+    end
+  end
+  
   resources :accesses
 
   resources :products do

@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  has_many :inclusions
+  has_many :inclusions, :order => :position
   has_many :meditations, :through => :inclusions
   has_many :prices
   
