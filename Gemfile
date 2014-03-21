@@ -43,9 +43,6 @@ gem 'aweber'
 # utility for nil-checking
 gem 'andand'
 
-# allows items of data to be reordered
-gem 'acts_as_list'
-
 # deployment compatibility with heroku
 gem 'rails_12factor', group: :production
 
