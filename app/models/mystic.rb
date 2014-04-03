@@ -2,6 +2,7 @@ class Mystic < ActiveRecord::Base
   has_many :accesses
   has_many :meditations, :through => :accesses
   has_many :purchases
+  attr_accessor :skip_welcome_email
 
   after_create :gain_access_to_free_meditations, :send_email_to_aweber, :deliver_gift_email
 
@@ -26,6 +27,7 @@ class Mystic < ActiveRecord::Base
   end
   
   def send_email_to_aweber
+    return if @skip_welcome_email
     begin
       oauth = AWeber::OAuth.new ENV['AWEBER_CONSUMER_KEY'], ENV['AWEBER_CONSUMER_SECRET']
       oauth.authorize_with_access ENV['AWEBER_ACCESS_TOKEN'], ENV['AWEBER_ACCESS_TOKEN_SECRET']
@@ -38,6 +40,7 @@ class Mystic < ActiveRecord::Base
   end
   
   def deliver_gift_email
+    return if @skip_welcome_email
     Gift.initiate(self).deliver
   end
 end

@@ -1,7 +1,11 @@
+<%= link_to "Create mystic & gift meditations", new_mystic_path %>
+<br>
 <div id="mystics">
   <% @mystics.each do |mystic| %>
     <%= div_for mystic do %>
-      <%= mystic.email %>
+      <%= mystic.email %><br>
     <% end %>
   <% end %>
 </div>
+<br>
+<%= link_to "Create mystic & gift meditations", new_mystic_path %>

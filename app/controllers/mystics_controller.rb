@@ -14,6 +14,30 @@ class MysticsController < ApplicationController
   def index
     @mystics = Mystic.all
   end
+  
+  def new
+    @mystic = Mystic.new :password => "ireceived#{rand(9999)}gifts"
+    @meditations = Meditation.all - Meditation.free
+  end
+  
+  def grant
+    @mystic = Mystic.new mystic_params
+    @mystic.password_confirmation = params[:mystic][:password]
+    @mystic.skip_confirmation!
+    @mystic.skip_welcome_email = true
+    
+    if @mystic.save
+      params[:gifted_meditations].each do |meditation_id|
+        @mystic.accesses.create :meditation_id => meditation_id
+      end
+      redirect_to accesses_path
+    elsif @existing_mystic = Mystic.find_by_email(mystic_params[:email])
+      
+    else
+      render :action => :new
+    end
+    
+  end
 
   # GET /mystics/1
   # GET /mystics/1.json
@@ -56,6 +80,6 @@ class MysticsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mystic_params
-      params[:mystic]
+      params[:mystic].permit(:email, :password, :first_name, :last_name)
     end
 end

@@ -1,0 +1,16 @@
+<%= form_for @mystic, url: grant_mystics_path do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
+  <%= f.label :password %>
+  <%= f.text_field :password %><br>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %><br>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %><br>
+
+  <% @meditations.each do |meditation| %>
+    <%= check_box_tag :'gifted_meditations[]', meditation.id %><%= meditation.name %><br>
+  <% end %>
+
+  <%= f.submit "Send Gifts"%>
+<% end %>
