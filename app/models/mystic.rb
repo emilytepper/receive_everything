@@ -12,7 +12,7 @@ class Mystic < ActiveRecord::Base
     if first_name?
       first_name
     else
-      email
+      email[/[^@]+/]
     end
   end
   

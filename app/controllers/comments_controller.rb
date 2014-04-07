@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
+    (render(:nothing => true) && return) if comment_params[:text].blank?
     @comment = Comment.new(comment_params)
     @comment.mystic = current_mystic
 
