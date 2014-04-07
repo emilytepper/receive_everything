@@ -1,6 +1,6 @@
 module CommentsHelper
   def display_comments_on subject
-    subject.comments.active.map do |comment|
+    Comment.on_subject(subject).active.map do |comment|
       div_for comment do
         "#{comment.mystic.name}: #{comment.text}"
       end
