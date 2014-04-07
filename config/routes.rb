@@ -1,5 +1,9 @@
 ReceiveEverything::Application.routes.draw do
-  resources :comments
+  resources :comments do
+    member do
+      get :reply
+    end
+  end
 
   resources :share_links do
     member do

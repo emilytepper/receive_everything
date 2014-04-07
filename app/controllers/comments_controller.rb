@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_creatrix!, except: :create
+  before_action :set_comment, only: [:show, :edit, :reply, :update, :destroy]
+  before_action :authenticate_creatrix!, except: [:create, :reply]
 
   # GET /comments
   # GET /comments.json
@@ -16,6 +16,9 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new
+  end
+  
+  def reply
   end
 
   # GET /comments/1/edit

@@ -1,1 +1,2 @@
-$('#<%= dom_id(@comment.subject, 'display_comments_on') %>').append('<%= escape_javascript display_comment @comment %>');
+<% target_dom_id = @comment.is_reply_to? ? dom_id(@comment.is_reply_to_comment) : dom_id(@comment.subject, 'display_comments_on') %>
+$('#<%= target_dom_id %>').append('<%= escape_javascript display_comment @comment %>');
