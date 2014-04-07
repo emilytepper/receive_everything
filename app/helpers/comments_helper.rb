@@ -1,10 +1,16 @@
 module CommentsHelper
   def display_comments_on subject
-    Comment.on_subject(subject).active.map do |comment|
-      div_for comment do
-        "#{comment.mystic.name}: #{comment.text}"
-      end
-    end.join.html_safe
+    div_for subject, 'display_comments_on' do
+      Comment.on_subject(subject).active.map do |comment|
+        display_comment comment
+      end.join.html_safe
+    end
+  end
+  
+  def display_comment comment
+    div_for comment do
+      "#{comment.mystic.name}: #{comment.text}"
+    end
   end
   
   def comment_form_for subject
