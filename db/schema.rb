@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320213149) do
+ActiveRecord::Schema.define(version: 20140407191002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 20140320213149) do
 
   add_index "accesses", ["meditation_id"], name: "index_accesses_on_meditation_id", using: :btree
   add_index "accesses", ["mystic_id"], name: "index_accesses_on_mystic_id", using: :btree
+
+  create_table "comments", force: true do |t|
+    t.integer  "mystic_id"
+    t.string   "subject_type"
+    t.integer  "subject_id"
+    t.text     "text"
+    t.integer  "is_reply_to"
+    t.boolean  "hidden"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["mystic_id"], name: "index_comments_on_mystic_id", using: :btree
 
   create_table "creatrixes", force: true do |t|
     t.string   "first_name"

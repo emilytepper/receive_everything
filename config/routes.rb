@@ -1,4 +1,6 @@
 ReceiveEverything::Application.routes.draw do
+  resources :comments
+
   resources :share_links do
     member do
       get :sharer

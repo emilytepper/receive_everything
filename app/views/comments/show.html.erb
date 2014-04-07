@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mystic:</strong>
+  <%= @comment.mystic %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @comment.subject %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @comment.text %>
+</p>
+
+<p>
+  <strong>Is reply to:</strong>
+  <%= @comment.is_reply_to %>
+</p>
+
+<p>
+  <strong>Hidden:</strong>
+  <%= @comment.hidden %>
+</p>
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>

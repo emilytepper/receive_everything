@@ -8,6 +8,14 @@ class Mystic < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
   
+  def name
+    if first_name?
+      first_name
+    else
+      email
+    end
+  end
+  
   def has_access_to? meditation
     meditations.include? meditation
   end
